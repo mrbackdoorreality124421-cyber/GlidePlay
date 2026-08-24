@@ -17,7 +17,7 @@ class OptimizationEngine(context: Context) {
             thermalListener = PowerManager.OnThermalStatusChangedListener { status ->
                 _thermalStatus.value = status
             }
-            powerManager.addThermalStatusListener(thermalListener)
+            powerManager.addThermalStatusListener(thermalListener!!)
         }
     }
     

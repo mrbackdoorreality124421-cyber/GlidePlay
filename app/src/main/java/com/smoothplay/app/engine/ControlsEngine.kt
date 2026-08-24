@@ -64,6 +64,7 @@ fun ControlsOverlay(activeProfile: String, onInput: (String, Boolean) -> Unit) {
         }
     ) {
         val w = size.width
+        val h = size.height
         drawCircle(Color.White.copy(alpha = 0.15f), radius = joystick.r * w, 
                    center = Offset(joystick.cx * w, joystick.cy * h), style = Stroke(4f))
         drawCircle(Color.White.copy(alpha = 0.7f), radius = (joystick.r * w) * 0.4f,
