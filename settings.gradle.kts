@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "SmoothPlay"
-include(":app")\n
+include(":app")
