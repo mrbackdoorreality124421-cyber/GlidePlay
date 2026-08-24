@@ -2,4 +2,4 @@
   "Super Smooth": { "resolutionScale": 0.5, "fpsCap": 30, "dxvkAsync": true, "turnip": false },
   "Balance": { "resolutionScale": 0.75, "fpsCap": 60, "dxvkAsync": true, "turnip": true },
   "Ultra": { "resolutionScale": 1.0, "fpsCap": 0, "dxvkAsync": true, "turnip": true }
-}\n
+}
