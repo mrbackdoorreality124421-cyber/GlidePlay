@@ -49,7 +49,6 @@ class RuntimeLauncher {
         process?.let { proc ->
             try {
                 if (proc.isAlive) {
-                    proc.descendants().forEach { it.destroy() }
                     proc.destroy()
                 }
             } catch (_: Exception) {}

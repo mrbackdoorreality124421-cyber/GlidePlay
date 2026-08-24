@@ -31,7 +31,7 @@ fun ControlsOverlay(activeProfile: String, onInput: (String, Boolean) -> Unit) {
     Canvas(modifier = Modifier
         .fillMaxSize()
         .pointerInput(Unit) {
-            detectTapGestures(onPress = { offset ->
+            detectTapGestures(onTap = { offset ->
                 val w = size.width; val h = size.height
                 val hit = buttons.find { b ->
                     val bx = b.cx * w; val by = b.cy * h; val br = b.r * w
@@ -41,7 +41,6 @@ fun ControlsOverlay(activeProfile: String, onInput: (String, Boolean) -> Unit) {
                 if (hit != null) {
                     pressedButton = hit.id
                     onInput(hit.mappedKey, true)
-                    tryAwaitRelease()
                     onInput(hit.mappedKey, false)
                     pressedButton = null
                 }

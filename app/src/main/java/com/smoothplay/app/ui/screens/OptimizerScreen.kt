@@ -30,7 +30,7 @@ fun OptimizerScreen() {
                 Text("$deviceScore", style = MaterialTheme.typography.displayLarge, color = MaterialTheme.colorScheme.onPrimaryContainer)
                 Text("/100 Score", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f))
                 Spacer(Modifier.height(16.dp))
-                LinearProgressIndicator(progress = { deviceScore / 100f }, modifier = Modifier.fillMaxWidth().height(8.dp))
+                LinearProgressIndicator(progress = deviceScore / 100f, modifier = Modifier.fillMaxWidth().height(8.dp))
                 Spacer(Modifier.height(8.dp))
                 Text(getTier(deviceScore), style = MaterialTheme.typography.titleMedium)
             }
