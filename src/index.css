@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-zinc-950: #09090b;
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+  
+  /* Hide scrollbar for a clean mobile look */
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .custom-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+

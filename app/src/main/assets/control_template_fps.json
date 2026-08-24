@@ -1,0 +1,15 @@
+{
+  "id": "fps_standard",
+  "name": "Standard FPS",
+  "joysticks": [
+    { "id": "move", "cx": 0.15, "cy": 0.75, "radius": 0.1, "mappedKey": "WASD" }
+  ],
+  "swipeZones": [
+    { "id": "look", "x": 0.5, "y": 0, "w": 0.5, "h": 1.0, "mappedAxis": "MOUSE_XY", "sensitivity": 1.2 }
+  ],
+  "buttons": [
+    { "id": "fire", "x": 0.85, "y": 0.75, "r": 0.05, "mappedKey": "MOUSE_LEFT" },
+    { "id": "aim", "x": 0.75, "y": 0.85, "r": 0.04, "mappedKey": "MOUSE_RIGHT" },
+    { "id": "jump", "x": 0.9, "y": 0.6, "r": 0.04, "mappedKey": "SPACE" }
+  ]
+}\n

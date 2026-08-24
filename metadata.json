@@ -1,0 +1,6 @@
+{
+  "name": "SmoothPlay Architecture Plan",
+  "description": "Comprehensive Android architecture and implementation plan for SmoothPlay PC Game emulator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
