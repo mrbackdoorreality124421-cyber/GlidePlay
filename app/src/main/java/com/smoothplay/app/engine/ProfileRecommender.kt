@@ -16,4 +16,4 @@ object ProfileRecommender {
             else -> "Super Smooth"
         }
     }
-}\n
+}

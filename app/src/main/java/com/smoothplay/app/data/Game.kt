@@ -13,4 +13,4 @@ data class Game(
     val weightScore: Int,
     val totalSizeMb: Long,
     val dependencies: String
-)\n
+)

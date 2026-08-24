@@ -20,4 +20,4 @@ object DatabaseModule {
     }
     @Provides
     fun provideGameDao(database: AppDatabase): GameDao = database.gameDao()
-}\n
+}

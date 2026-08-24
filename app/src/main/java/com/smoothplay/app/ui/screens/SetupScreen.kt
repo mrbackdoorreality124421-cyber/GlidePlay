@@ -37,7 +37,7 @@ fun SetupScreen(onSetupComplete: () -> Unit) {
                 Text(statusText, color = if (hasError) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.titleMedium)
                 if (isInstalling) {
                     Spacer(modifier = Modifier.height(16.dp))
-                    LinearProgressIndicator(progress = progress / 100f, modifier = Modifier.fillMaxWidth().height(8.dp))
+                    LinearProgressIndicator(progress = (progress / 100f).coerceIn(0f, 1f), modifier = Modifier.fillMaxWidth().height(8.dp))
                     Spacer(modifier = Modifier.height(8.dp))
                     Text("$progress%", style = MaterialTheme.typography.bodySmall)
                 }
