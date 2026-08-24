@@ -13,4 +13,4 @@ private val DarkColorScheme = darkColorScheme(
 @Composable
 fun SmoothPlayTheme(content: @Composable () -> Unit) {
     MaterialTheme(colorScheme = DarkColorScheme, content = content)
-}\n
+}

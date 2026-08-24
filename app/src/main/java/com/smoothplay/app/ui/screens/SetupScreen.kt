@@ -13,69 +13,48 @@ import kotlinx.coroutines.launch
 @Composable
 fun SetupScreen(onSetupComplete: () -> Unit) {
     val context = LocalContext.current
-    val coroutineScope = rememberCoroutineScope()
-    var statusText by remember { mutableStateOf("Initializing...") }
+    val scope = rememberCoroutineScope()
+    var statusText by remember { mutableStateOf("Checking runtime...") }
+    var progress by remember { mutableIntStateOf(0) }
     var isInstalling by remember { mutableStateOf(false) }
     var hasError by remember { mutableStateOf(false) }
-
     val installer = remember { RuntimeInstallerEngine(context) }
 
     LaunchedEffect(Unit) {
         if (installer.isRuntimeInstalled()) {
+            statusText = "Runtime installed!"
             onSetupComplete()
-        } else {
-            statusText = "PC Emulator Cores Missing."
-        }
+        } else { statusText = "PC Emulator Cores Missing" }
     }
 
-    Column(
-        modifier = Modifier.fillMaxSize().padding(32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text("SmoothPlay First Setup", style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(statusText, color = MaterialTheme.colorScheme.primary)
-        Spacer(modifier = Modifier.height(32.dp))
-
-        if (isInstalling) {
-            CircularProgressIndicator()
-        } else if (hasError) {
-            Button(onClick = {
-                hasError = false
-                isInstalling = true
-                coroutineScope.launch {
-                    val success = installer.downloadAndInstallRuntime { msg, _ -> statusText = msg }
-                    isInstalling = false
-                    if (success) {
-                        onSetupComplete()
-                    } else {
-                        hasError = true
-                        statusText = "Installation Failed. Check internet connection."
+    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+            Column(modifier = Modifier.padding(32.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                Text("GlidePlay Setup", style = MaterialTheme.typography.headlineLarge)
+                Spacer(modifier = Modifier.height(8.dp))
+                Text("Let's get your PC emulator ready", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Spacer(modifier = Modifier.height(32.dp))
+                Text(statusText, color = if (hasError) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.titleMedium)
+                if (isInstalling) {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    LinearProgressIndicator(progress = (progress / 100f).coerceIn(0f, 1f), modifier = Modifier.fillMaxWidth().height(8.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text("$progress%", style = MaterialTheme.typography.bodySmall)
+                }
+                Spacer(modifier = Modifier.height(32.dp))
+                if (!isInstalling) {
+                    Button(onClick = {
+                        hasError = false; isInstalling = true
+                        scope.launch {
+                            val s = installer.downloadAndInstallRuntime { m, p -> statusText = m; progress = p }
+                            isInstalling = false
+                            if (s) onSetupComplete() else { hasError = true; statusText = "Install failed. Check internet." }
+                        }
+                    }, modifier = Modifier.fillMaxWidth().height(56.dp)) {
+                        Text(if (hasError) "Retry" else "Download & Install (~400MB)")
                     }
                 }
-            }) {
-                Text("Retry Install")
-            }
-        } else {
-            Button(
-                onClick = {
-                    isInstalling = true
-                    coroutineScope.launch {
-                        val success = installer.downloadAndInstallRuntime { msg, _ -> statusText = msg }
-                        isInstalling = false
-                        if (success) {
-                            onSetupComplete()
-                        } else {
-                            hasError = true
-                            statusText = "Installation Failed."
-                        }
-                    }
-                },
-                modifier = Modifier.fillMaxWidth().height(56.dp)
-            ) {
-                Text("Download & Install Core Files (~400MB)")
             }
         }
     }
-}\n
+}

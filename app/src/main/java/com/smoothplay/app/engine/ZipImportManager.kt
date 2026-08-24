@@ -18,4 +18,4 @@ class ZipImportManager(private val context: Context) {
             return@withContext false
         }
     }
-}\n
+}
