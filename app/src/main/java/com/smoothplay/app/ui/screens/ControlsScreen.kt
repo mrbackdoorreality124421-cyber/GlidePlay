@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.smoothplay.app.engine.ControlsOverlay
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ControlsScreen() {
     var activeProfile by remember { mutableStateOf("Balanced") }
