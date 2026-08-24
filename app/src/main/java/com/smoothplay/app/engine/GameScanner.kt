@@ -12,17 +12,16 @@ data class ScanResult(
 
 class GameScanner {
     fun scanDirectory(gameDir: File): ScanResult {
-        val allFiles = gameDir.walkTopDown().toList()
+        val allFiles = gameDir.walkTopDown().filter { it.isFile }.toList()
         val executables = allFiles.filter { it.extension.equals("exe", ignoreCase = true) }
-        
         val mainExe = detectMainExecutable(executables)
         val deps = detectDependencies(allFiles)
         val weight = calculateWeight(allFiles)
-        val sizeMb = allFiles.sumOf { it.length() } / (1024 * 1024)
-        
+        val sizeBytes = allFiles.sumOf { it.length() }
+        val sizeMb = sizeBytes / (1024 * 1024)
         return ScanResult(
             mainExecutable = mainExe?.absolutePath ?: "",
-            isHeavy = weight > 50,
+            isHeavy = weight > 50 || sizeMb > 2000,
             dependencies = deps,
             weightScore = weight,
             totalSizeMb = sizeMb
@@ -30,7 +29,8 @@ class GameScanner {
     }
 
     private fun detectMainExecutable(exes: List<File>): File? {
-        val exactMatches = listOf("game.exe", "launcher.exe", "run.exe")
+        if (exes.isEmpty()) return null
+        val exactMatches = listOf("game.exe", "launcher.exe", "run.exe", "start.exe", "play.exe")
         exes.find { exactMatches.contains(it.name.lowercase()) }?.let { return it }
         return exes.maxByOrNull { it.length() }
     }
@@ -38,18 +38,19 @@ class GameScanner {
     private fun detectDependencies(files: List<File>): List<String> {
         val deps = mutableListOf<String>()
         val fileNames = files.map { it.name.lowercase() }
-        if (fileNames.any { it.contains("d3dcompiler") || it.contains("dxgi") }) deps.add("DirectX")
+        if (fileNames.any { it.contains("d3dcompiler") || it.contains("dxgi") || it.contains("d3d") }) deps.add("DirectX")
         if (fileNames.any { it.contains("vulkan") }) deps.add("Vulkan")
-        if (fileNames.any { it.contains("msvcp") }) deps.add("VC++ Redist")
+        if (fileNames.any { it.contains("msvcp") || it.contains("msvcr") || it.contains("vcruntime") }) deps.add("VC++ Redist")
+        if (fileNames.any { it.contains("openal") }) deps.add("OpenAL")
+        if (fileNames.any { it.contains("physx") }) deps.add("PhysX")
         return deps
     }
 
     private fun calculateWeight(files: List<File>): Int {
-        var score = 0
         val sizeMb = files.sumOf { it.length() } / (1024 * 1024)
-        score += (sizeMb / 500).toInt()
+        var score = (sizeMb / 500).toInt()
         val dllCount = files.count { it.extension.lowercase() == "dll" }
         score += (dllCount / 10)
         return score.coerceIn(0, 100)
     }
-}\n
+}
