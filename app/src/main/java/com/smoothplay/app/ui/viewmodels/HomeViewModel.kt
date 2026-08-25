@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.smoothplay.app.OrientationManager
 import com.smoothplay.app.data.Game
 import com.smoothplay.app.data.GameDao
 import com.smoothplay.app.engine.GamePipelineEngine
@@ -44,9 +45,21 @@ class HomeViewModel @Inject constructor(
         }
     }
     
+    fun importFolder(uri: Uri) {
+        viewModelScope.launch {
+            _isProcessing.value = true; _statusMsg.value = "Processing Folder..."
+            val pipeline = GamePipelineEngine(context)
+            val game = pipeline.processFolder(uri, context.filesDir) { m, _ -> _statusMsg.value = m }
+            if (game != null) { gameDao.insertGame(game); _statusMsg.value = "Imported: ${game.name}" }
+            else { _statusMsg.value = "Import failed." }
+            _isProcessing.value = false
+        }
+    }
+    
     fun launchGame(game: Game) {
         viewModelScope.launch {
             _isGameRunning.value = true
+            OrientationManager.isLandscape.value = true
             _launchLog.value = listOf("Starting ${game.name}...", "Profile: ${game.profile}")
             val env = OptimizationEngine.getEnvVarsForProfile(game.profile)
             launcher.launchGame(game.installPath, game.mainExecutable, env) { l ->
@@ -54,10 +67,15 @@ class HomeViewModel @Inject constructor(
                 if (_launchLog.value.size > 200) _launchLog.value = _launchLog.value.takeLast(200)
             }
             _isGameRunning.value = false
+            OrientationManager.isLandscape.value = false
         }
     }
     
-    fun stopGame() { launcher.stop(); _isGameRunning.value = false }
+    fun stopGame() { 
+        launcher.stop()
+        _isGameRunning.value = false
+        OrientationManager.isLandscape.value = false
+    }
     
     fun deleteGame(game: Game) {
         viewModelScope.launch {

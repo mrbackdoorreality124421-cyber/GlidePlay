@@ -10,6 +10,7 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.smoothplay.app.engine.RuntimeInstallerEngine
+import com.smoothplay.app.engine.RuntimeInstallerState
 import kotlinx.coroutines.*
 
 class DownloadService : Service() {
@@ -57,26 +58,33 @@ class DownloadService : Service() {
         val notification = buildNotification("Preparing download...", 0)
         startForeground(NOTIFICATION_ID, notification)
         
+        RuntimeInstallerState.isInstalling.value = true
+        RuntimeInstallerState.hasError.value = false
+        
         serviceScope.launch {
             try {
                 val success = installer.downloadAndInstallRuntime(
                     onProgress = { message, progress ->
+                        RuntimeInstallerState.statusText.value = message
+                        RuntimeInstallerState.progress.value = progress
                         updateNotification(message, progress)
-                    },
-                    isBackground = true
+                    }
                 )
                 
                 if (success) {
                     updateNotification("Installation complete!", 100)
                     Log.d("DownloadService", "Installation successful")
                 } else {
+                    RuntimeInstallerState.hasError.value = true
                     updateNotification("Installation failed", 0)
                     Log.e("DownloadService", "Installation failed")
                 }
             } catch (e: Exception) {
                 Log.e("DownloadService", "Service error: ${e.message}", e)
+                RuntimeInstallerState.hasError.value = true
                 updateNotification("Error: ${e.message}", 0)
             } finally {
+                RuntimeInstallerState.isInstalling.value = false
                 delay(3000)
                 stopForeground(STOP_FOREGROUND_REMOVE)
                 stopSelf()
@@ -86,6 +94,7 @@ class DownloadService : Service() {
     
     private fun stopDownload() {
         serviceScope.cancel()
+        RuntimeInstallerState.isInstalling.value = false
         stopForeground(STOP_FOREGROUND_REMOVE)
         stopSelf()
     }

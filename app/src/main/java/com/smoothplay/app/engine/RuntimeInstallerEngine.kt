@@ -2,11 +2,20 @@ package com.smoothplay.app.engine
 
 import android.content.Context
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
+
+object RuntimeInstallerState {
+    val progress = MutableStateFlow(0)
+    val statusText = MutableStateFlow("Checking runtime...")
+    val isInstalling = MutableStateFlow(false)
+    val hasError = MutableStateFlow(false)
+}
 
 class RuntimeInstallerEngine(private val context: Context) {
     companion object {
@@ -16,6 +25,9 @@ class RuntimeInstallerEngine(private val context: Context) {
     }
 
     fun isRuntimeInstalled(): Boolean {
+        val prefs = context.getSharedPreferences("SmoothPlayPrefs", Context.MODE_PRIVATE)
+        if (prefs.getBoolean("runtime_installed", false)) return true
+        
         val rootfsDir = File(context.filesDir, "rootfs")
         val box64 = File(rootfsDir, BOX64_PATH)
         val proot = File(rootfsDir, PROOT_PATH)
@@ -32,15 +44,28 @@ class RuntimeInstallerEngine(private val context: Context) {
                 connection = URL(RUNTIME_URL).openConnection() as HttpURLConnection
                 connection.connectTimeout = 30000
                 connection.readTimeout = 60000
-                connection.connect()
-                if (connection.responseCode != HttpURLConnection.HTTP_OK) {
-                    throw Exception("Server returned ${connection.responseCode}")
+                
+                // Resume support
+                var downloadedBytes = 0L
+                if (tempZip.exists()) {
+                    downloadedBytes = tempZip.length()
+                    connection.setRequestProperty("Range", "bytes=$downloadedBytes-")
                 }
-                val fileLength = connection.contentLengthLong
+                
+                connection.connect()
+                
+                val responseCode = connection.responseCode
+                if (responseCode != HttpURLConnection.HTTP_OK && responseCode != HttpURLConnection.HTTP_PARTIAL) {
+                    throw Exception("Server returned $responseCode")
+                }
+                
+                val fileLength = downloadedBytes + connection.contentLengthLong
+                val append = responseCode == HttpURLConnection.HTTP_PARTIAL
+                
                 connection.inputStream.use { input ->
-                    FileOutputStream(tempZip).use { output ->
+                    FileOutputStream(tempZip, append).use { output ->
                         val data = ByteArray(65536)
-                        var total: Long = 0
+                        var total = downloadedBytes
                         var count: Int
                         while (input.read(data).also { count = it } != -1) {
                             total += count
@@ -69,14 +94,19 @@ class RuntimeInstallerEngine(private val context: Context) {
             File(rootfsDir, "usr/local/bin").takeIf { it.exists() }?.listFiles()?.forEach { it.setExecutable(true, false) }
             
             tempZip.delete()
+            
+            context.getSharedPreferences("SmoothPlayPrefs", Context.MODE_PRIVATE).edit().putBoolean("runtime_installed", true).apply()
+            
             onProgress("Installation Complete!", 100)
             return@withContext true
         } catch (e: Exception) {
-            tempZip.delete()
             onProgress("Error: ${e.message}", 0)
             return@withContext false
         }
     }
     
-    fun uninstallRuntime() { File(context.filesDir, "rootfs").deleteRecursively() }
+    fun uninstallRuntime() { 
+        File(context.filesDir, "rootfs").deleteRecursively()
+        context.getSharedPreferences("SmoothPlayPrefs", Context.MODE_PRIVATE).edit().putBoolean("runtime_installed", false).apply()
+    }
 }

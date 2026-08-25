@@ -24,16 +24,27 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), onGameClick: (String)
     val status by viewModel.statusMsg.collectAsState()
     val isProcessing by viewModel.isProcessing.collectAsState()
     var showDeleteDialog by remember { mutableStateOf<Game?>(null) }
-    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri -> uri?.let { viewModel.importZip(it) } }
+    
+    val zipLauncher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri -> 
+        uri?.let { viewModel.importZip(it) } 
+    }
+    val folderLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri -> 
+        uri?.let { viewModel.importFolder(it) } 
+    }
 
     Scaffold(topBar = { TopAppBar(title = { Text("Game Library") }) }) { p ->
         Column(Modifier.fillMaxSize().padding(p).padding(16.dp)) {
-            Button(onClick = { launcher.launch("application/zip") }, modifier = Modifier.fillMaxWidth().height(64.dp), enabled = !isProcessing) {
-                Icon(Icons.Default.Add, null); Spacer(Modifier.width(8.dp)); Text("Add Game ZIP")
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(onClick = { zipLauncher.launch("application/zip") }, modifier = Modifier.weight(1f).height(64.dp), enabled = !isProcessing) {
+                    Icon(Icons.Default.FolderZip, null); Spacer(Modifier.width(8.dp)); Text("Add ZIP")
+                }
+                Button(onClick = { folderLauncher.launch(null) }, modifier = Modifier.weight(1f).height(64.dp), enabled = !isProcessing) {
+                    Icon(Icons.Default.Folder, null); Spacer(Modifier.width(8.dp)); Text("Add Folder")
+                }
             }
             if (status.isNotEmpty()) {
                 Spacer(Modifier.height(8.dp))
-                Text(status, color = if (status.contains("Error")) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary)
+                Text(status, color = if (status.contains("Error") || status.contains("failed")) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary)
             }
             if (isProcessing) { Spacer(Modifier.height(8.dp)); LinearProgressIndicator(modifier = Modifier.fillMaxWidth()) }
             Spacer(Modifier.height(16.dp))
@@ -43,7 +54,7 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), onGameClick: (String)
                         Icon(Icons.Default.SportsEsports, null, modifier = Modifier.size(64.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
                         Spacer(Modifier.height(8.dp))
                         Text("No games yet", style = MaterialTheme.typography.titleMedium)
-                        Text("Tap the button above to import", style = MaterialTheme.typography.bodySmall)
+                        Text("Tap a button above to import", style = MaterialTheme.typography.bodySmall)
                     }
                 }
             } else {
@@ -58,10 +69,6 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), onGameClick: (String)
                                         Text("Size: ${g.totalSizeMb}MB | ${g.status}", style = MaterialTheme.typography.bodySmall)
                                     }
                                     IconButton(onClick = { showDeleteDialog = g }) { Icon(Icons.Default.Delete, null, tint = MaterialTheme.colorScheme.error) }
-                                }
-                                Spacer(Modifier.height(8.dp))
-                                Button(onClick = { viewModel.launchGame(g) }, modifier = Modifier.fillMaxWidth()) {
-                                    Icon(Icons.Default.PlayArrow, null); Spacer(Modifier.width(8.dp)); Text("Launch")
                                 }
                             }
                         }
