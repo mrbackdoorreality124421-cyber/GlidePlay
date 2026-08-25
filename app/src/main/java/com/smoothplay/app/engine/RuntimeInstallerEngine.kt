@@ -10,7 +10,7 @@ import java.net.URL
 
 class RuntimeInstallerEngine(private val context: Context) {
     companion object {
-        private const val RUNTIME_URL = "https://github.com/brunodev85/winlator/releases/download/v7.1.2/main.7.1.2.com.winlator.obb"
+        private const val RUNTIME_URL = "https://archive.org/download/winlator-2-0/main.2.com.winlator.obb"
         private const val BOX64_PATH = "usr/local/bin/box64"
         private const val PROOT_PATH = "usr/local/bin/proot"
     }
