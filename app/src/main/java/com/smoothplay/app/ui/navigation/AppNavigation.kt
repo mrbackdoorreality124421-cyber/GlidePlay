@@ -2,49 +2,68 @@ package com.smoothplay.app.ui.navigation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.Games
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Speed
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import com.smoothplay.app.engine.RuntimeInstallerEngine
-import com.smoothplay.app.ui.screens.*
+import com.smoothplay.app.ui.screens.ControlsScreen
+import com.smoothplay.app.ui.screens.HomeScreen
+import com.smoothplay.app.ui.screens.OptimizerScreen
+import com.smoothplay.app.ui.screens.SettingsScreen
 
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
-    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
-    val context = androidx.compose.ui.platform.LocalContext.current
-    val installer = remember { RuntimeInstallerEngine(context) }
-    var isSetupDone by remember { mutableStateOf(installer.isRuntimeInstalled()) }
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
 
-    if (!isSetupDone) { SetupScreen(onSetupComplete = { isSetupDone = true }) }
-    else {
-        Scaffold(bottomBar = {
+    Scaffold(
+        bottomBar = {
             NavigationBar {
-                listOf(Triple("home", "Library", Icons.Default.Games), Triple("optimizer", "Optimizer", Icons.Default.Speed),
-                       Triple("controls", "Controls", Icons.Default.Gamepad), Triple("settings", "Settings", Icons.Default.Settings)
-                ).forEach { (r, l, i) ->
-                    NavigationBarItem(icon = { Icon(i, l) }, label = { Text(l) }, selected = currentRoute == r,
-                        onClick = { navController.navigate(r) { popUpTo("home") { saveState = true }; launchSingleTop = true; restoreState = true } })
+                val items = listOf(
+                    Triple("home", "Library", Icons.Default.Games),
+                    Triple("optimizer", "Optimizer", Icons.Default.Speed),
+                    Triple("controls", "Controls", Icons.Default.Build),
+                    Triple("settings", "Settings", Icons.Default.Settings)
+                )
+                items.forEach { (route, label, icon) ->
+                    NavigationBarItem(
+                        icon = { Icon(icon, contentDescription = label) },
+                        label = { Text(label) },
+                        selected = currentRoute == route,
+                        onClick = {
+                            navController.navigate(route) {
+                                popUpTo("home") { saveState = true }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        }
+                    )
                 }
             }
-        }) { p ->
-            NavHost(navController, startDestination = "home", modifier = Modifier.padding(p)) {
-                composable("home") { HomeScreen(onGameClick = { id -> navController.navigate("game/$id") }) }
-                composable("optimizer") { OptimizerScreen() }
-                composable("controls") { ControlsScreen() }
-                composable("settings") { SettingsScreen() }
-                composable("game/{gameId}", arguments = listOf(navArgument("gameId") { type = NavType.StringType })) { b ->
-                    val id = b.arguments?.getString("gameId") ?: return@composable
-                    GameDetailScreen(gameId = id, onBack = { navController.popBackStack() })
-                }
-            }
+        }
+    ) { innerPadding ->
+        NavHost(
+            navController = navController,
+            startDestination = "home",
+            modifier = Modifier.padding(innerPadding)
+        ) {
+            composable("home") { HomeScreen() }
+            composable("optimizer") { OptimizerScreen() }
+            composable("controls") { ControlsScreen() }
+            composable("settings") { SettingsScreen() }
         }
     }
 }

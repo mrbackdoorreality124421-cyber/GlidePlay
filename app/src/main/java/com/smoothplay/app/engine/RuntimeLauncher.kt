@@ -1,68 +1,27 @@
 package com.smoothplay.app.engine
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import java.io.BufferedReader
-import java.io.InputStreamReader
+// This is the abstraction layer that would interface with Box64, Wine, VirGL, Turnip.
+interface RuntimeLauncher {
+    fun prepareGameContainer(gameId: String, installPath: String)
+    fun generateConfiguration(profile: String, dxvkEnabled: Boolean, turnipEnabled: Boolean)
+    fun launch(executablePath: String)
+    fun stop()
+}
 
-class RuntimeLauncher {
-    @Volatile private var process: Process? = null
-    @Volatile private var isRunning = false
-    
-    suspend fun launchGame(
-        gameDir: String, mainExe: String, envVars: Map<String, String>, onLog: (String) -> Unit
-    ) = withContext(Dispatchers.IO) {
-        val rootfs = "/data/data/com.smoothplay.app/files/rootfs"
-        val command = listOf(
-            "proot", "-b", "/dev", "-b", "/proc", "-b", "/sys",
-            "-r", rootfs, "-w", gameDir,
-            "/usr/local/bin/box64", "wine", mainExe
-        )
-        val pb = ProcessBuilder(command)
-        pb.environment().apply {
-            putAll(envVars)
-            put("DISPLAY", ":0")
-        }
-        pb.redirectErrorStream(true)
-        
-        try {
-            isRunning = true
-            process = pb.start()
-            val proc = process ?: throw IllegalStateException("Process failed to start")
-            BufferedReader(InputStreamReader(proc.inputStream)).use { reader ->
-                var line: String?
-                while (reader.readLine().also { line = it } != null) {
-                    line?.let { onLog(it) }
-                }
-            }
-            val exitCode = proc.waitFor()
-            onLog("Process exited with code: $exitCode")
-        } catch (e: Exception) {
-            onLog("CRASH: ${e.javaClass.simpleName} - ${e.message}")
-        } finally {
-            isRunning = false
-            cleanup()
-        }
+class SmoothPlayRuntimeLauncher : RuntimeLauncher {
+    override fun prepareGameContainer(gameId: String, installPath: String) {
+        // Implementation for setting up proot/chroot environment
     }
-    
-    fun stop() {
-        process?.let { proc ->
-            try {
-                if (proc.isAlive) {
-                    proc.destroy()
-                }
-            } catch (_: Exception) {}
-        }
+
+    override fun generateConfiguration(profile: String, dxvkEnabled: Boolean, turnipEnabled: Boolean) {
+        // Generate box64rc and wine registry patches
     }
-    
-    fun isRunning(): Boolean = isRunning && (process?.isAlive == true)
-    
-    private fun cleanup() {
-        try {
-            process?.inputStream?.close()
-            process?.outputStream?.close()
-            process?.errorStream?.close()
-        } catch (_: Exception) {}
-        process = null
+
+    override fun launch(executablePath: String) {
+        // Execute box64 wine game.exe
+    }
+
+    override fun stop() {
+        // Kill processes
     }
 }

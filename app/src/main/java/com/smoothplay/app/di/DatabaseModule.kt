@@ -1,4 +1,5 @@
 package com.smoothplay.app.di
+
 import android.content.Context
 import androidx.room.Room
 import com.smoothplay.app.data.AppDatabase
@@ -16,8 +17,15 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
-        return Room.databaseBuilder(context, AppDatabase::class.java, "smoothplay.db").build()
+        return Room.databaseBuilder(
+            context,
+            AppDatabase::class.java,
+            "smoothplay.db"
+        ).build()
     }
+
     @Provides
-    fun provideGameDao(database: AppDatabase): GameDao = database.gameDao()
+    fun provideGameDao(database: AppDatabase): GameDao {
+        return database.gameDao()
+    }
 }
