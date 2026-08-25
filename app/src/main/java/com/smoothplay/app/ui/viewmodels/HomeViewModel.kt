@@ -1,1 +1,85 @@
-cGFja2FnZSBjb20uc21vb3RocGxheS5hcHAudWkudmlld21vZGVscwppbXBvcnQgYW5kcm9pZC5uZXQuVXJpCmltcG9ydCBhbmRyb2lkeC5saWZlY3ljbGUuVmlld01vZGVsCmltcG9ydCBhbmRyb2lkeC5saWZlY3ljbGUudmlld01vZGVsU2NvcGUKaW1wb3J0IGNvbS5zbW9vdGhwbGF5LmFwcC5kYXRhLkdhbWVEYW8KaW1wb3J0IGNvbS5zbW9vdGhwbGF5LmFwcC5lbmdpbmUuR2FtZVNjYW5uZXIKaW1wb3J0IGNvbS5zbW9vdGhwbGF5LmFwcC5lbmdpbmUuR2FtZVBpcGVsaW5lRW5naW5lCmltcG9ydCBkYWdnZXIuaGlsdC5hbmRyb2lkLmxpZmVjeWNsZS5IaWx0Vmlld01vZGVsCmltcG9ydCBrb3RsaW54LmNvcm91dGluZXMubGF1bmNoCmltcG9ydCBqYXZheC5pbmplY3QuSW5qZWN0CkBIaWx0Vmlld01vZGVsCmNsYXNzIEhvbWVWaWV3TW9kZWwgQEluamVjdCBjb25zdHJ1Y3Rvcihwcml2YXRlIHZhbCBnYW1lRGFvOiBHYW1lRGFvLCBwcml2YXRlIHZhbCBnYW1lU2Nhbm5lcjogR2FtZVNjYW5uZXIsIHByaXZhdGUgdmFsIGdhbWVQaXBlbGluZTogR2FtZVBpcGVsaW5lRW5naW5lKSA6IFZpZXdNb2RlbCgpIHsKICAgIGZ1biBpbXBvcnRHYW1lKHVyaTogVXJpKSB7IHZpZXdNb2RlbFNjb3BlLmxhdW5jaCB7IHZhbCBkZXRlY3Rpb24gPSBnYW1lU2Nhbm5lci5kZXRlY3RGcm9tVXJpKHVyaSkgPzogcmV0dXJuQGxhdW5jaCB9IH0KICAgIGZ1biBsYXVuY2hHYW1lKGdhbWVJZDogTG9uZywgb25SZXN1bHQ6IChCb29sZWFuKSAtPiBVbml0KSB7IHZpZXdNb2RlbFNjb3BlLmxhdW5jaCB7IG9uUmVzdWx0KHRydWUpIH0gfQp9Cg==
+package com.smoothplay.app.ui.viewmodels
+
+import android.content.Context
+import android.net.Uri
+import android.util.Log
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.smoothplay.app.data.Game
+import com.smoothplay.app.data.GameDao
+import com.smoothplay.app.engine.GamePipelineEngine
+import com.smoothplay.app.engine.GameScanner
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val gameDao: GameDao,
+    @ApplicationContext private val context: Context
+) : ViewModel() {
+    
+    companion object {
+        private const val TAG = "HomeViewModel"
+    }
+    
+    val games = gameDao.getAllGames()
+    private val _statusMsg = MutableStateFlow("Library Ready")
+    val statusMsg: StateFlow<String> = _statusMsg
+
+    fun importGame(uri: Uri) {
+        viewModelScope.launch {
+            try {
+                _statusMsg.value = "Detecting game format..."
+                
+                val detection = GameScanner.detectFromUri(context, uri)
+                if (detection == null) {
+                    _statusMsg.value = "Unsupported file format"
+                    Log.w(TAG, "Could not detect file format for: $uri")
+                    return@launch
+                }
+                
+                _statusMsg.value = "Processing ${detection.type.displayName}..."
+                val pipeline = GamePipelineEngine(context)
+                val game = pipeline.processGame(uri, detection, context.cacheDir) { msg, _ -> 
+                    _statusMsg.value = msg 
+                }
+                
+                if (game != null) {
+                    gameDao.insertGame(game)
+                    _statusMsg.value = "Import Complete: ${game.name}"
+                } else {
+                    _statusMsg.value = "Import Failed"
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Import error: ${e.message}", e)
+                _statusMsg.value = "Error: ${e.message}"
+            }
+        }
+    }
+    
+    fun launchGame(game: Game, onResult: (Boolean) -> Unit) {
+        viewModelScope.launch {
+            try {
+                _statusMsg.value = "Launching ${game.name}..."
+                val pipeline = GamePipelineEngine(context)
+                val success = pipeline.launchGame(game)
+                
+                if (success) {
+                    _statusMsg.value = "Game session ended"
+                    onResult(true)
+                } else {
+                    _statusMsg.value = "Failed to launch game"
+                    onResult(false)
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Launch error: ${e.message}", e)
+                _statusMsg.value = "Launch error: ${e.message}"
+                onResult(false)
+            }
+        }
+    }
+}

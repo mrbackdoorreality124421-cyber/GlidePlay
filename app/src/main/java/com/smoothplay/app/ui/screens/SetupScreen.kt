@@ -1,1 +1,146 @@
-cGFja2FnZSBjb20uc21vb3RocGxheS5hcHAudWkuc2NyZWVucwppbXBvcnQgYW5kcm9pZC5jb250ZW50LkludGVudAppbXBvcnQgYW5kcm9pZHguY29tcG9zZS5mb3VuZGF0aW9uLmxheW91dC4qCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLm1hdGVyaWFsMy4qCmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnJ1bnRpbWUuKgppbXBvcnQgYW5kcm9pZHguY29tcG9zZS51aS5BbGlnbm1lbnQKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkuTW9kaWZpZXIKaW1wb3J0IGFuZHJvaWR4LmNvbXBvc2UudWkucGxhdGZvcm0uTG9jYWxDb250ZXh0CmltcG9ydCBhbmRyb2lkeC5jb21wb3NlLnVpLnVuaXQuZHAKaW1wb3J0IGNvbS5zbW9vdGhwbGF5LmFwcC5lbmdpbmUuUnVudGltZUluc3RhbGxlckVuZ2luZQppbXBvcnQgY29tLnNtb290aHBsYXkuYXBwLnNlcnZpY2UuRG93bmxvYWRTZXJ2aWNlCmltcG9ydCBrb3RsaW54LmNvcm91dGluZXMuZGVsYXkKQENvbXBvc2FibGUKZnVuIFNldHVwU2NyZWVuKG9uU2V0dXBDb21wbGV0ZTogKCkgLT4gVW5pdCkgewogICAgdmFsIGNvbnRleHQgPSBMb2NhbENvbnRleHQuY3VycmVudAogICAgdmFsIGluc3RhbGxlciA9IHJlbWVtYmVyIHsgUnVudGltZUluc3RhbGxlckVuZ2luZShjb250ZXh0KSB9CiAgICB2YXIgaXNJbnN0YWxsaW5nIGJ5IHJlbWVtYmVyIHsgbXV0YWJsZVN0YXRlT2YoZmFsc2UpIH0KICAgIHZhciBzdGF0dXNUZXh0IGJ5IHJlbWVtYmVyIHsgbXV0YWJsZVN0YXRlT2YoIlJlYWR5IHRvIGluc3RhbGwiKSB9CiAgICBMYXVuY2hlZEVmZmVjdChpc0luc3RhbGxpbmcpIHsKICAgICAgICBpZiAoaXNJbnN0YWxsaW5nKSB7CiAgICAgICAgICAgIHdoaWxlIChpc0luc3RhbGxpbmcpIHsKICAgICAgICAgICAgICAgIGRlbGF5KDIwMDApCiAgICAgICAgICAgICAgICBpZiAoaW5zdGFsbGVyLmlzUnVudGltZUluc3RhbGxlZCgpKSB7IGlzSW5zdGFsbGluZyA9IGZhbHNlOyBvblNldHVwQ29tcGxldGUoKTsgYnJlYWsgfQogICAgICAgICAgICAgICAgc3RhdHVzVGV4dCA9ICJCYWNrZ3JvdW5kIGRvd25sb2FkLi4uICIgKyBmb3JtYXRCeXRlcyhpbnN0YWxsZXIuZ2V0RG93bmxvYWRQcm9ncmVzcygpKQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQogICAgQ29sdW1uKG1vZGlmaWVyID0gTW9kaWZpZXIuZmlsbE1heFNpemUoKS5wYWRkaW5nKDI0LmRwKSwgdmVydGljYWxBcnJhbmdlbWVudCA9IEFycmFuZ2VtZW50LkNlbnRlciwgaG9yaXpvbnRhbEFsaWdubWVudCA9IEFsaWdubWVudC5DZW50ZXJIb3Jpem9udGFsbHkpIHsKICAgICAgICBUZXh0KCJSdW50aW1lIFNldHVwIiwgc3R5bGUgPSBNYXRlcmlhbFRoZW1lLnR5cG9ncmFwaHkuaGVhZGxpbmVNZWRpdW0pOyBTcGFjZXIobW9kaWZpZXIgPSBNb2RpZmllci5oZWlnaHQoMTYuZHApKQogICAgICAgIFRleHQoc3RhdHVzVGV4dCk7IFNwYWNlcihtb2RpZmllciA9IE1vZGlmaWVyLmhlaWdodCgyNC5kcCkpCiAgICAgICAgQnV0dG9uKG9uQ2xpY2sgPSB7IHZhbCBpbnRlbnQgPSBJbnRlbnQoY29udGV4dCwgRG93bmxvYWRTZXJ2aWNlOjpjbGFzcy5qYXZhKS5hcHBseSB7IGFjdGlvbiA9IERvd25sb2FkU2VydmljZS5BQ1RJT05fU1RBUlQgfTsgY29udGV4dC5zdGFydEZvcmVncm91bmRTZXJ2aWNlKGludGVudCk7IGlzSW5zdGFsbGluZyA9IHRydWUgfSkgeyBUZXh0KCJEb3dubG9hZCAmIEluc3RhbGwgKH40MDBNQikiKSB9CiAgICAgICAgaWYgKGluc3RhbGxlci5nZXREb3dubG9hZFByb2dyZXNzKCkgPiAwKSB7CiAgICAgICAgICAgIFNwYWNlcihtb2RpZmllciA9IE1vZGlmaWVyLmhlaWdodCgxNi5kcCkpCiAgICAgICAgICAgIEJ1dHRvbihvbkNsaWNrID0geyB2YWwgaW50ZW50ID0gSW50ZW50KGNvbnRleHQsIERvd25sb2FkU2VydmljZTo6Y2xhc3MuamF2YSkuYXBwbHkgeyBhY3Rpb24gPSBEb3dubG9hZFNlcnZpY2UuQUNUSU9OX1NUQVJUIH07IGNvbnRleHQuc3RhcnRGb3JlZ3JvdW5kU2VydmljZShpbnRlbnQpOyBpc0luc3RhbGxpbmcgPSB0cnVlIH0pIHsgVGV4dCgiUmVzdW1lIERvd25sb2FkIikgfQogICAgICAgIH0KICAgIH0KfQpmdW4gZm9ybWF0Qnl0ZXMoYnl0ZXM6IExvbmcpOiBTdHJpbmcgeyBpZiAoYnl0ZXMgPCAxMDI0KSByZXR1cm4gIiRieXRlcyBCIjsgdmFsIGtiID0gYnl0ZXMgLyAxMDI0LjA7IGlmIChrYiA8IDEwMjQpIHJldHVybiBTdHJpbmcuZm9ybWF0KCIlLjFmIEtCIiwga2IpOyB2YWwgbWIgPSBrYiAvIDEwMjQuMDsgcmV0dXJuIFN0cmluZy5mb3JtYXQoIiUuMWYgTUIiLCBtYikgfQo=
+package com.smoothplay.app.ui.screens
+
+import android.content.Intent
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
+import com.smoothplay.app.engine.RuntimeInstallerEngine
+import com.smoothplay.app.service.DownloadService
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
+@Composable
+fun SetupScreen(onSetupComplete: () -> Unit) {
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    var statusText by remember { mutableStateOf("Initializing...") }
+    var isInstalling by remember { mutableStateOf(false) }
+    var hasError by remember { mutableStateOf(false) }
+    var downloadedBytes by remember { mutableLongStateOf(0L) }
+    var showResumeOption by remember { mutableStateOf(false) }
+    
+    val installer = remember { RuntimeInstallerEngine(context) }
+
+    LaunchedEffect(Unit) {
+        if (installer.isRuntimeInstalled()) {
+            onSetupComplete()
+        } else {
+            statusText = "PC Emulator Cores Missing"
+            downloadedBytes = installer.getDownloadProgress()
+            showResumeOption = downloadedBytes > 0
+        }
+    }
+
+    LaunchedEffect(isInstalling) {
+        if (isInstalling) {
+            while (isInstalling) {
+                delay(2000)
+                if (installer.isRuntimeInstalled()) {
+                    isInstalling = false
+                    onSetupComplete()
+                    break
+                }
+                statusText = "Background download... " + formatBytes(installer.getDownloadProgress())
+            }
+        }
+    }
+
+    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier.padding(32.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text("GlidePlay Setup", style = MaterialTheme.typography.headlineLarge)
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    "Let's get your PC emulator ready",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(32.dp))
+                
+                Text(
+                    statusText,
+                    color = if (hasError) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                    style = MaterialTheme.typography.titleMedium
+                )
+                
+                if (isInstalling) {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    CircularProgressIndicator(modifier = Modifier.size(48.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        "Download will continue in background if you leave the app",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                
+                Spacer(modifier = Modifier.height(32.dp))
+                
+                if (!isInstalling) {
+                    if (showResumeOption && !hasError) {
+                        Button(
+                            onClick = {
+                                isInstalling = true
+                                startDownloadService(context)
+                                statusText = "Download resuming in background..."
+                            },
+                            modifier = Modifier.fillMaxWidth().height(56.dp)
+                        ) {
+                            Text("Resume Download (${formatBytes(downloadedBytes)} downloaded)")
+                        }
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
+                    
+                    Button(
+                        onClick = {
+                            hasError = false
+                            isInstalling = true
+                            startDownloadService(context)
+                            statusText = "Starting download..."
+                        },
+                        modifier = Modifier.fillMaxWidth().height(56.dp)
+                    ) {
+                        Text(if (hasError) "Retry" else "Download & Install (~400MB)")
+                    }
+                    
+                    if (hasError) {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            "Tip: Download continues in background even if you close the app",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+private fun startDownloadService(context: android.content.Context) {
+    val intent = Intent(context, DownloadService::class.java).apply {
+        action = DownloadService.ACTION_START
+    }
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        context.startForegroundService(intent)
+    } else {
+        context.startService(intent)
+    }
+}
+
+private fun formatBytes(bytes: Long): String {
+    return when {
+        bytes >= 1_000_000_000 -> String.format("%.1f GB", bytes / 1_000_000_000.0)
+        bytes >= 1_000_000 -> String.format("%.1f MB", bytes / 1_000_000.0)
+        bytes >= 1_000 -> String.format("%.1f KB", bytes / 1_000.0)
+        else -> "$bytes B"
+    }
+}

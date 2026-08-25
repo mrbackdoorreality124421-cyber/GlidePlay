@@ -1,1 +1,204 @@
-cGFja2FnZSBjb20uc21vb3RocGxheS5hcHAuZW5naW5lCmltcG9ydCBhbmRyb2lkLmNvbnRlbnQuQ29udGV4dAppbXBvcnQgYW5kcm9pZC5jb250ZW50LlNoYXJlZFByZWZlcmVuY2VzCmltcG9ydCBrb3RsaW54LmNvcm91dGluZXMuRGlzcGF0Y2hlcnMKaW1wb3J0IGtvdGxpbnguY29yb3V0aW5lcy53aXRoQ29udGV4dAppbXBvcnQgamF2YS5pby5GaWxlCmltcG9ydCBqYXZhLmlvLkZpbGVPdXRwdXRTdHJlYW0KaW1wb3J0IGphdmEuaW8uSW5wdXRTdHJlYW0KaW1wb3J0IGphdmEubmV0Lkh0dHBVUkxDb25uZWN0aW9uCmltcG9ydCBqYXZhLm5ldC5VUkwKY2xhc3MgUnVudGltZUluc3RhbGxlckVuZ2luZShwcml2YXRlIHZhbCBjb250ZXh0OiBDb250ZXh0KSB7CiAgICBwcml2YXRlIHZhbCBwcmVmczogU2hhcmVkUHJlZmVyZW5jZXMgPSBjb250ZXh0LmdldFNoYXJlZFByZWZlcmVuY2VzKCJpbnN0YWxsZXJfcHJlZnMiLCBDb250ZXh0Lk1PREVfUFJJVkFURSkKICAgIHByaXZhdGUgdmFsIFBSRUZfSU5TVEFMTEVEID0gIlBSRUZfSU5TVEFMTEVEIgogICAgcHJpdmF0ZSB2YWwgSU5TVEFMTF9WRVJTSU9OID0gIklOU1RBTExfVkVSU0lPTiIKICAgIHByaXZhdGUgdmFsIFJVTlRJTUVfVVJMID0gImh0dHBzOi8vYXJjaGl2ZS5vcmcvZG93bmxvYWQvd2lubGF0b3ItMi0wL21haW4uMi5jb20ud2lubGF0b3Iub2JiIgogICAgcHJpdmF0ZSB2YWwgZG93bmxvYWRGaWxlID0gRmlsZShjb250ZXh0LmZpbGVzRGlyLCAicnVudGltZS5vYmIiKQogICAgZnVuIGlzUnVudGltZUluc3RhbGxlZCgpOiBCb29sZWFuIHsKICAgICAgICBpZiAoIXByZWZzLmdldEJvb2xlYW4oUFJFRl9JTlNUQUxMRUQsIGZhbHNlKSkgcmV0dXJuIGZhbHNlCiAgICAgICAgdmFsIGJpbkRpciA9IEZpbGUoY29udGV4dC5maWxlc0RpciwgImJpbiIpCiAgICAgICAgdmFsIGJveDY0ID0gRmlsZShiaW5EaXIsICJib3g2NCIpCiAgICAgICAgdmFsIHByb290ID0gRmlsZShiaW5EaXIsICJwcm9vdCIpCiAgICAgICAgdmFsIHdpbmUgPSBGaWxlKGJpbkRpciwgIndpbmUiKQogICAgICAgIHJldHVybiBib3g2NC5jYW5FeGVjdXRlKCkgJiYgcHJvb3QuY2FuRXhlY3V0ZSgpICYmIHdpbmUuY2FuRXhlY3V0ZSgpCiAgICB9CiAgICBmdW4gZ2V0RG93bmxvYWRQcm9ncmVzcygpOiBMb25nIHsgcmV0dXJuIGlmIChkb3dubG9hZEZpbGUuZXhpc3RzKCkpIGRvd25sb2FkRmlsZS5sZW5ndGgoKSBlbHNlIDBMIH0KICAgIGZ1biByZXNldEluc3RhbGxhdGlvbigpIHsgcHJlZnMuZWRpdCgpLnB1dEJvb2xlYW4oUFJFRl9JTlNUQUxMRUQsIGZhbHNlKS5hcHBseSgpOyBpZiAoZG93bmxvYWRGaWxlLmV4aXN0cygpKSBkb3dubG9hZEZpbGUuZGVsZXRlKCkgfQogICAgc3VzcGVuZCBmdW4gaW5zdGFsbFJ1bnRpbWUob25Qcm9ncmVzczogKExvbmcpIC0+IFVuaXQpID0gd2l0aENvbnRleHQoRGlzcGF0Y2hlcnMuSU8pIHsKICAgICAgICB2YWwgdXJsID0gVVJMKFJVTlRJTUVfVVJMKTsgdmFsIGNvbm5lY3Rpb24gPSB1cmwub3BlbkNvbm5lY3Rpb24oKSBhcyBIdHRwVVJMQ29ubmVjdGlvbgogICAgICAgIHZhbCBleGlzdGluZ0xlbmd0aCA9IGdldERvd25sb2FkUHJvZ3Jlc3MoKQogICAgICAgIGlmIChleGlzdGluZ0xlbmd0aCA+IDApIHsgY29ubmVjdGlvbi5zZXRSZXF1ZXN0UHJvcGVydHkoIlJhbmdlIiwgImJ5dGVzPSRleGlzdGluZ0xlbmd0aC0iKSB9CiAgICAgICAgY29ubmVjdGlvbi5jb25uZWN0KCkKICAgICAgICB2YWwgaW5wdXRTdHJlYW06IElucHV0U3RyZWFtID0gY29ubmVjdGlvbi5pbnB1dFN0cmVhbTsgdmFsIG91dHB1dFN0cmVhbSA9IEZpbGVPdXRwdXRTdHJlYW0oZG93bmxvYWRGaWxlLCBleGlzdGluZ0xlbmd0aCA+IDApCiAgICAgICAgdmFsIGJ1ZmZlciA9IEJ5dGVBcnJheSg4MTkyKTsgdmFyIGJ5dGVzUmVhZDogSW50OyB2YXIgdG90YWxSZWFkID0gZXhpc3RpbmdMZW5ndGgKICAgICAgICB3aGlsZSAoaW5wdXRTdHJlYW0ucmVhZChidWZmZXIpLmFsc28geyBieXRlc1JlYWQgPSBpdCB9ICE9IC0xKSB7CiAgICAgICAgICAgIG91dHB1dFN0cmVhbS53cml0ZShidWZmZXIsIDAsIGJ5dGVzUmVhZCk7IHRvdGFsUmVhZCArPSBieXRlc1JlYWQKICAgICAgICAgICAgd2l0aENvbnRleHQoRGlzcGF0Y2hlcnMuTWFpbikgeyBvblByb2dyZXNzKHRvdGFsUmVhZCkgfQogICAgICAgIH0KICAgICAgICBvdXRwdXRTdHJlYW0uY2xvc2UoKTsgaW5wdXRTdHJlYW0uY2xvc2UoKTsgcHJlZnMuZWRpdCgpLnB1dEJvb2xlYW4oUFJFRl9JTlNUQUxMRUQsIHRydWUpLmFwcGx5KCkKICAgIH0KfQo=
+package com.smoothplay.app.engine
+
+import android.content.Context
+import android.content.SharedPreferences
+import android.util.Log
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.net.HttpURLConnection
+import java.net.URL
+import java.util.zip.ZipException
+import java.util.zip.ZipInputStream
+
+class RuntimeInstallerEngine(private val context: Context) {
+    private val prefs: SharedPreferences = context.getSharedPreferences("installer_prefs", Context.MODE_PRIVATE)
+    
+    companion object {
+        private const val TAG = "RuntimeInstaller"
+        private const val RUNTIME_URL = "https://archive.org/download/winlator-2-0/main.2.com.winlator.obb"
+        private const val PREF_INSTALLED = "runtime_installed"
+        private const val PREF_INSTALL_VERSION = "install_version"
+        private const val INSTALL_VERSION = 1
+    }
+
+    suspend fun isRuntimeInstalled(): Boolean = withContext(Dispatchers.IO) {
+        val persistedState = prefs.getBoolean(PREF_INSTALLED, false)
+        val installedVersion = prefs.getInt(PREF_INSTALL_VERSION, 0)
+        
+        if (!persistedState || installedVersion != INSTALL_VERSION) {
+            return@withContext false
+        }
+        
+        val rootfsDir = File(context.filesDir, "rootfs")
+        val box64 = File(rootfsDir, "usr/local/bin/box64")
+        val proot = File(rootfsDir, "usr/local/bin/proot")
+        val wine = File(rootfsDir, "opt/wine/bin/wine")
+        
+        val verified = box64.exists() && box64.canExecute() && 
+                       proot.exists() && proot.canExecute() &&
+                       wine.exists() && wine.canExecute()
+        
+        if (!verified && persistedState) {
+            prefs.edit().putBoolean(PREF_INSTALLED, false).apply()
+        }
+        
+        return@withContext verified
+    }
+    
+    suspend fun getDownloadProgress(): Long = withContext(Dispatchers.IO) {
+        val tempFile = File(context.cacheDir, "runtime.zip")
+        if (tempFile.exists()) tempFile.length() else 0L
+    }
+
+    suspend fun downloadAndInstallRuntime(
+        onProgress: (String, Int) -> Unit,
+        isBackground: Boolean = false
+    ): Boolean = withContext(Dispatchers.IO) {
+        val rootfsDir = File(context.filesDir, "rootfs")
+        val tempZip = File(context.cacheDir, "runtime.zip")
+        
+        try {
+            if (isRuntimeInstalled()) {
+                onProgress("Runtime already installed", 100)
+                return@withContext true
+            }
+            
+            onProgress("Preparing download...", 0)
+            val connection = URL(RUNTIME_URL).openConnection() as HttpURLConnection
+            connection.connectTimeout = 30000
+            connection.readTimeout = 60000
+            connection.requestMethod = "GET"
+            
+            val existingBytes = if (tempZip.exists()) tempZip.length() else 0L
+            if (existingBytes > 0) {
+                connection.setRequestProperty("Range", "bytes=$existingBytes-")
+            }
+            
+            connection.connect()
+            
+            val responseCode = connection.responseCode
+            if (responseCode != HttpURLConnection.HTTP_OK && responseCode != HttpURLConnection.HTTP_PARTIAL) {
+                throw IOException("Server returned $responseCode")
+            }
+            
+            val fileLength = connection.contentLengthLong + existingBytes
+            val append = responseCode == HttpURLConnection.HTTP_PARTIAL
+            
+            onProgress("Starting download...", 0)
+            
+            connection.inputStream.use { input ->
+                FileOutputStream(tempZip, append).use { output ->
+                    val buffer = ByteArray(65536)
+                    var total = existingBytes
+                    var count: Int
+                    var lastProgressTime = System.currentTimeMillis()
+                    
+                    while (input.read(buffer).also { count = it } != -1) {
+                        total += count
+                        output.write(buffer, 0, count)
+                        
+                        val now = System.currentTimeMillis()
+                        if (now - lastProgressTime > 500) {
+                            if (fileLength > 0) {
+                                val progress = ((total * 100) / fileLength).toInt().coerceIn(0, 100)
+                                val mbDownloaded = total / (1024 * 1024)
+                                val mbTotal = fileLength / (1024 * 1024)
+                                onProgress("Downloading... ${mbDownloaded}MB / ${mbTotal}MB", progress)
+                            }
+                            lastProgressTime = now
+                        }
+                    }
+                }
+            }
+            
+            connection.disconnect()
+            
+            onProgress("Verifying download...", 100)
+            if (!tempZip.exists() || tempZip.length() == 0L) {
+                throw IOException("Download failed - no data received")
+            }
+            
+            onProgress("Extracting runtime...", 0)
+            if (!rootfsDir.exists()) rootfsDir.mkdirs()
+            
+            tempZip.inputStream().use { fis ->
+                ZipInputStream(fis).use { zis ->
+                    var entry = zis.nextEntry
+                    var extCount = 0
+                    var lastProgress = 0
+                    
+                    while (entry != null) {
+                        val file = File(rootfsDir, entry.name)
+                        val canonicalPath = file.canonicalPath
+                        if (!canonicalPath.startsWith(rootfsDir.canonicalPath + File.separator)) {
+                            Log.w(TAG, "Skipping malicious entry: ${entry.name}")
+                            entry = zis.nextEntry
+                            continue
+                        }
+                        
+                        if (entry.isDirectory) {
+                            file.mkdirs()
+                        } else {
+                            file.parentFile?.mkdirs()
+                            FileOutputStream(file).use { fos ->
+                                zis.copyTo(fos)
+                            }
+                        }
+                        extCount++
+                        
+                        if (extCount % 50 == 0) {
+                            val progress = ((extCount * 100) / 5000).coerceIn(0, 100)
+                            if (progress != lastProgress) {
+                                onProgress("Extracting... $extCount files", progress)
+                                lastProgress = progress
+                            }
+                        }
+                        
+                        try {
+                            entry = zis.nextEntry
+                        } catch (e: ZipException) {
+                            Log.w(TAG, "Corrupted entry, continuing: ${e.message}")
+                            break
+                        }
+                    }
+                }
+            }
+            
+            onProgress("Setting permissions...", 100)
+            val box64 = File(rootfsDir, "usr/local/bin/box64")
+            val proot = File(rootfsDir, "usr/local/bin/proot")
+            val wine = File(rootfsDir, "opt/wine/bin/wine")
+            
+            box64.setExecutable(true)
+            proot.setExecutable(true)
+            wine.setExecutable(true)
+            
+            tempZip.delete()
+            
+            prefs.edit()
+                .putBoolean(PREF_INSTALLED, true)
+                .putInt(PREF_INSTALL_VERSION, INSTALL_VERSION)
+                .apply()
+            
+            onProgress("Installation complete!", 100)
+            return@withContext true
+        } catch (e: Exception) {
+            Log.e(TAG, "Installation failed: ${e.message}", e)
+            onProgress("Error: ${e.message}", 0)
+            return@withContext false
+        }
+    }
+    
+    fun resetInstallation() {
+        prefs.edit()
+            .putBoolean(PREF_INSTALLED, false)
+            .apply()
+        val rootfsDir = File(context.filesDir, "rootfs")
+        rootfsDir.deleteRecursively()
+        val tempZip = File(context.cacheDir, "runtime.zip")
+        tempZip.delete()
+    }
+}

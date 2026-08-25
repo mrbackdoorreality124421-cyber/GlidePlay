@@ -1,1 +1,169 @@
-cGFja2FnZSBjb20uc21vb3RocGxheS5hcHAuZW5naW5lCmltcG9ydCBrb3RsaW54LmNvcm91dGluZXMuRGlzcGF0Y2hlcnMKaW1wb3J0IGtvdGxpbnguY29yb3V0aW5lcy53aXRoQ29udGV4dAppbXBvcnQgamF2YS5pby5CdWZmZXJlZElucHV0U3RyZWFtCmltcG9ydCBqYXZhLmlvLkZpbGUKaW1wb3J0IGphdmEuaW8uRmlsZU91dHB1dFN0cmVhbQppbXBvcnQgamF2YS51dGlsLnppcC5aaXBFeGNlcHRpb24KaW1wb3J0IGphdmEudXRpbC56aXAuWmlwSW5wdXRTdHJlYW0KY2xhc3MgR2FtZUV4dHJhY3RvciB7CiAgICBjb21wYW5pb24gb2JqZWN0IHsgY29uc3QgdmFsIE1BWF9GSUxFX1NJWkUgPSAxMEwgKiAxMDI0ICogMTAyNCAqIDEwMjQ7IGNvbnN0IHZhbCBNQVhfRklMRVMgPSAxMDAwMDAgfQogICAgc3VzcGVuZCBmdW4gZXh0cmFjdCh6aXBGaWxlOiBGaWxlLCBkZXN0RGlyOiBGaWxlLCBvbkNvbXBsZXRlOiAoKSAtPiBVbml0LCBvbkVycm9yOiAoVGhyb3dhYmxlKSAtPiBVbml0KSB7CiAgICAgICAgdHJ5IHsKICAgICAgICAgICAgd2l0aENvbnRleHQoRGlzcGF0Y2hlcnMuSU8pIHsKICAgICAgICAgICAgICAgIGlmICghZGVzdERpci5leGlzdHMoKSkgZGVzdERpci5ta2RpcnMoKQogICAgICAgICAgICAgICAgdmFyIGZpbGVDb3VudCA9IDAKICAgICAgICAgICAgICAgIFppcElucHV0U3RyZWFtKEJ1ZmZlcmVkSW5wdXRTdHJlYW0oemlwRmlsZS5pbnB1dFN0cmVhbSgpKSkudXNlIHsgemlzIC0+CiAgICAgICAgICAgICAgICAgICAgdmFyIGVudHJ5ID0gemlzLm5leHRFbnRyeQogICAgICAgICAgICAgICAgICAgIHdoaWxlIChlbnRyeSAhPSBudWxsKSB7CiAgICAgICAgICAgICAgICAgICAgICAgIGlmICgrK2ZpbGVDb3VudCA+IE1BWF9GSUxFUykgdGhyb3cgRXhjZXB0aW9uKCJUb28gbWFueSBmaWxlcyBpbiBhcmNoaXZlIikKICAgICAgICAgICAgICAgICAgICAgICAgdmFsIG91dEZpbGUgPSBGaWxlKGRlc3REaXIsIGVudHJ5Lm5hbWUpOyB2YWwgY2Fub25pY2FsRGVzdERpciA9IGRlc3REaXIuY2Fub25pY2FsUGF0aDsgdmFsIGNhbm9uaWNhbE91dEZpbGUgPSBvdXRGaWxlLmNhbm9uaWNhbFBhdGgKICAgICAgICAgICAgICAgICAgICAgICAgaWYgKCFjYW5vbmljYWxPdXRGaWxlLnN0YXJ0c1dpdGgoY2Fub25pY2FsRGVzdERpcikpIHsgdGhyb3cgU2VjdXJpdHlFeGNlcHRpb24oIlppcCBlbnRyeSBpcyBvdXRzaWRlIG9mIHRoZSB0YXJnZXQgZGlyOiAke2VudHJ5Lm5hbWV9IikgfQogICAgICAgICAgICAgICAgICAgICAgICBpZiAoZW50cnkuaXNEaXJlY3RvcnkpIHsgb3V0RmlsZS5ta2RpcnMoKSB9IGVsc2UgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgb3V0RmlsZS5wYXJlbnRGaWxlPy5ta2RpcnMoKQogICAgICAgICAgICAgICAgICAgICAgICAgICAgRmlsZU91dHB1dFN0cmVhbShvdXRGaWxlKS51c2UgeyBmb3MgLT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YXIgc2l6ZSA9IDBMOyB2YWwgYnVmZmVyID0gQnl0ZUFycmF5KDgxOTIpOyB2YXIgbGVuID0gemlzLnJlYWQoYnVmZmVyKQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHdoaWxlIChsZW4gIT0gLTEpIHsgc2l6ZSArPSBsZW47IGlmIChzaXplID4gTUFYX0ZJTEVfU0laRSkgdGhyb3cgRXhjZXB0aW9uKCJGaWxlIHRvbyBsYXJnZSIpOyBmb3Mud3JpdGUoYnVmZmVyLCAwLCBsZW4pOyBsZW4gPSB6aXMucmVhZChidWZmZXIpIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICB6aXMuY2xvc2VFbnRyeSgpOyBlbnRyeSA9IHppcy5uZXh0RW50cnkKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBvbkNvbXBsZXRlKCkKICAgICAgICAgICAgfQogICAgICAgIH0gY2F0Y2ggKGU6IFppcEV4Y2VwdGlvbikgeyBvbkVycm9yKGUpIH0gY2F0Y2ggKGU6IEV4Y2VwdGlvbikgeyBvbkVycm9yKGUpIH0KICAgIH0KfQo=
+package com.smoothplay.app.engine
+
+import android.util.Log
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.InputStream
+import java.util.zip.ZipEntry
+import java.util.zip.ZipException
+import java.util.zip.ZipInputStream
+
+object GameExtractor {
+    private const val TAG = "GameExtractor"
+    private const val MAX_FILE_SIZE = 10L * 1024 * 1024 * 1024
+    private const val MAX_FILES = 100000
+
+    @Throws(IOException::class)
+    fun extractZip(
+        inputStream: InputStream,
+        destDir: File,
+        onProgress: (Int) -> Unit,
+        onComplete: () -> Unit = {},
+        onError: (Exception) -> Unit = {}
+    ) {
+        try {
+            if (!destDir.exists()) destDir.mkdirs()
+            
+            ZipInputStream(inputStream).use { zis ->
+                var zipEntry: ZipEntry? = null
+                var extractedCount = 0
+                var totalBytes: Long = 0
+                
+                try {
+                    zipEntry = zis.nextEntry
+                } catch (e: ZipException) {
+                    throw IOException("Invalid or corrupted ZIP file: ${e.message}")
+                }
+                
+                while (zipEntry != null) {
+                    val newFile = File(destDir, zipEntry.name)
+                    val canonicalDest = newFile.canonicalPath
+                    val canonicalDestDir = destDir.canonicalPath
+                    
+                    if (!canonicalDest.startsWith(canonicalDestDir + File.separator)) {
+                        throw IOException("Invalid ZIP entry (path traversal attempt): ${zipEntry.name}")
+                    }
+                    
+                    if (extractedCount >= MAX_FILES) {
+                        throw IOException("ZIP contains too many files (max: $MAX_FILES)")
+                    }
+                    
+                    if (zipEntry.isDirectory) {
+                        newFile.mkdirs()
+                    } else {
+                        newFile.parentFile?.mkdirs()
+                        
+                        FileOutputStream(newFile).use { fos ->
+                            val buffer = ByteArray(8192)
+                            var count: Int
+                            var fileSize: Long = 0
+                            
+                            try {
+                                while (zis.read(buffer).also { count = it } != -1) {
+                                    fileSize += count
+                                    totalBytes += count
+                                    
+                                    if (fileSize > MAX_FILE_SIZE || totalBytes > MAX_FILE_SIZE) {
+                                        throw IOException("File too large (max: ${MAX_FILE_SIZE / (1024*1024*1024)}GB)")
+                                    }
+                                    
+                                    fos.write(buffer, 0, count)
+                                }
+                            } catch (e: IOException) {
+                                Log.e(TAG, "Error extracting ${zipEntry.name}: ${e.message}")
+                                throw e
+                            }
+                        }
+                    }
+                    
+                    extractedCount++
+                    if (extractedCount % 10 == 0) {
+                        try {
+                            onProgress(extractedCount)
+                        } catch (e: Exception) {
+                            Log.w(TAG, "Progress callback error: ${e.message}")
+                        }
+                    }
+                    
+                    try {
+                        zipEntry = zis.nextEntry
+                    } catch (e: ZipException) {
+                        Log.w(TAG, "Corrupted entry, stopping extraction: ${e.message}")
+                        break
+                    }
+                }
+                
+                try {
+                    zis.closeEntry()
+                } catch (e: Exception) {
+                    Log.w(TAG, "Error closing entry: ${e.message}")
+                }
+            }
+            
+            onComplete()
+        } catch (e: Exception) {
+            Log.e(TAG, "Extraction failed: ${e.message}", e)
+            onError(e)
+            throw e
+        }
+    }
+    
+    fun detectGameExecutable(directory: File): GameFormat? {
+        if (!directory.exists() || !directory.isDirectory) return null
+        
+        val files = directory.walkTopDown()
+            .filter { it.isFile }
+            .take(1000)
+            .toList()
+        
+        files.find { it.extension.equals("exe", ignoreCase = true) }?.let {
+            return GameFormat.EXE(it.absolutePath)
+        }
+        
+        files.find { it.extension.equals("iso", ignoreCase = true) }?.let {
+            return GameFormat.ISO(it.absolutePath)
+        }
+        
+        files.find { it.extension.equals("bin", ignoreCase = true) }?.let {
+            return GameFormat.BIN(it.absolutePath)
+        }
+        
+        files.find { it.name.equals("start.sh", ignoreCase = true) || 
+                     it.name.equals("run.sh", ignoreCase = true) ||
+                     it.name.equals("launch.sh", ignoreCase = true) }?.let {
+            return GameFormat.SCRIPT(it.absolutePath)
+        }
+        
+        files.find { it.name.contains("setup", ignoreCase = true) && 
+                     it.extension.equals("exe", ignoreCase = true) }?.let {
+            return GameFormat.EXE(it.absolutePath)
+        }
+        
+        return null
+    }
+}
+
+sealed class GameFormat {
+    data class EXE(val path: String) : GameFormat()
+    data class ISO(val path: String) : GameFormat()
+    data class BIN(val path: String) : GameFormat()
+    data class SCRIPT(val path: String) : GameFormat()
+    data class DIRECTORY(val path: String) : GameFormat()
+    
+    fun getExecutablePath(): String = when (this) {
+        is EXE -> path
+        is ISO -> path
+        is BIN -> path
+        is SCRIPT -> path
+        is DIRECTORY -> path
+    }
+    
+    fun getDisplayName(): String = when (this) {
+        is EXE -> "Windows Executable"
+        is ISO -> "ISO Disc Image"
+        is BIN -> "CD/DVD Image"
+        is SCRIPT -> "Shell Script"
+        is DIRECTORY -> "Game Directory"
+    }
+}

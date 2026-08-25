@@ -1,1 +1,113 @@
-cGFja2FnZSBjb20uc21vb3RocGxheS5hcHAuc2VydmljZQppbXBvcnQgYW5kcm9pZC5hcHAuTm90aWZpY2F0aW9uQ2hhbm5lbAppbXBvcnQgYW5kcm9pZC5hcHAuTm90aWZpY2F0aW9uTWFuYWdlcgppbXBvcnQgYW5kcm9pZC5hcHAuU2VydmljZQppbXBvcnQgYW5kcm9pZC5jb250ZW50LkNvbnRleHQKaW1wb3J0IGFuZHJvaWQuY29udGVudC5JbnRlbnQKaW1wb3J0IGFuZHJvaWQub3MuQnVpbGQKaW1wb3J0IGFuZHJvaWQub3MuSUJpbmRlcgppbXBvcnQgYW5kcm9pZHguY29yZS5hcHAuTm90aWZpY2F0aW9uQ29tcGF0CmltcG9ydCBjb20uc21vb3RocGxheS5hcHAuZW5naW5lLlJ1bnRpbWVJbnN0YWxsZXJFbmdpbmUKaW1wb3J0IGtvdGxpbnguY29yb3V0aW5lcy5Db3JvdXRpbmVTY29wZQppbXBvcnQga290bGlueC5jb3JvdXRpbmVzLkRpc3BhdGNoZXJzCmltcG9ydCBrb3RsaW54LmNvcm91dGluZXMuSm9iCmltcG9ydCBrb3RsaW54LmNvcm91dGluZXMuU3VwZXJ2aXNvckpvYgppbXBvcnQga290bGlueC5jb3JvdXRpbmVzLmxhdW5jaApjbGFzcyBEb3dubG9hZFNlcnZpY2UgOiBTZXJ2aWNlKCkgewogICAgY29tcGFuaW9uIG9iamVjdCB7IGNvbnN0IHZhbCBBQ1RJT05fU1RBUlQgPSAiY29tLnNtb290aHBsYXkuYXBwLmFjdGlvbi5TVEFSVF9ET1dOTE9BRCI7IGNvbnN0IHZhbCBBQ1RJT05fU1RPUCA9ICJjb20uc21vb3RocGxheS5hcHAuYWN0aW9uLlNUT1BfRE9XTkxPQUQiOyBjb25zdCB2YWwgQ0hBTk5FTF9JRCA9ICJEb3dubG9hZFNlcnZpY2VDaGFubmVsIjsgY29uc3QgdmFsIE5PVElGSUNBVElPTl9JRCA9IDEgfQogICAgcHJpdmF0ZSB2YWwgc2VydmljZVNjb3BlID0gQ29yb3V0aW5lU2NvcGUoRGlzcGF0Y2hlcnMuSU8gKyBTdXBlcnZpc29ySm9iKCkpOyBwcml2YXRlIHZhciBqb2I6IEpvYj8gPSBudWxsCiAgICBwcml2YXRlIGxhdGVpbml0IHZhciBpbnN0YWxsZXI6IFJ1bnRpbWVJbnN0YWxsZXJFbmdpbmU7IHByaXZhdGUgbGF0ZWluaXQgdmFyIG5vdGlmaWNhdGlvbk1hbmFnZXI6IE5vdGlmaWNhdGlvbk1hbmFnZXI7IHByaXZhdGUgbGF0ZWluaXQgdmFyIG5vdGlmaWNhdGlvbkJ1aWxkZXI6IE5vdGlmaWNhdGlvbkNvbXBhdC5CdWlsZGVyCiAgICBvdmVycmlkZSBmdW4gb25DcmVhdGUoKSB7CiAgICAgICAgc3VwZXIub25DcmVhdGUoKTsgaW5zdGFsbGVyID0gUnVudGltZUluc3RhbGxlckVuZ2luZSh0aGlzKQogICAgICAgIG5vdGlmaWNhdGlvbk1hbmFnZXIgPSBnZXRTeXN0ZW1TZXJ2aWNlKENvbnRleHQuTk9USUZJQ0FUSU9OX1NFUlZJQ0UpIGFzIE5vdGlmaWNhdGlvbk1hbmFnZXIKICAgICAgICBpZiAoQnVpbGQuVkVSU0lPTi5TREtfSU5UID49IEJ1aWxkLlZFUlNJT05fQ09ERVMuTykgeyB2YWwgY2hhbm5lbCA9IE5vdGlmaWNhdGlvbkNoYW5uZWwoQ0hBTk5FTF9JRCwgIkRvd25sb2FkcyIsIE5vdGlmaWNhdGlvbk1hbmFnZXIuSU1QT1JUQU5DRV9MT1cpOyBub3RpZmljYXRpb25NYW5hZ2VyLmNyZWF0ZU5vdGlmaWNhdGlvbkNoYW5uZWwoY2hhbm5lbCkgfQogICAgICAgIG5vdGlmaWNhdGlvbkJ1aWxkZXIgPSBOb3RpZmljYXRpb25Db21wYXQuQnVpbGRlcih0aGlzLCBDSEFOTkVMX0lEKS5zZXRDb250ZW50VGl0bGUoIkRvd25sb2FkaW5nIFJ1bnRpbWUiKS5zZXRTbWFsbEljb24oYW5kcm9pZC5SLmRyYXdhYmxlLnN0YXRfc3lzX2Rvd25sb2FkKS5zZXRPbmx5QWxlcnRPbmNlKHRydWUpLnNldFByb2dyZXNzKDEwMCwgMCwgdHJ1ZSkKICAgICAgICBzdGFydEZvcmVncm91bmQoTk9USUZJQ0FUSU9OX0lELCBub3RpZmljYXRpb25CdWlsZGVyLmJ1aWxkKCkpCiAgICB9CiAgICBvdmVycmlkZSBmdW4gb25TdGFydENvbW1hbmQoaW50ZW50OiBJbnRlbnQ/LCBmbGFnczogSW50LCBzdGFydElkOiBJbnQpOiBJbnQgewogICAgICAgIHdoZW4gKGludGVudD8uYWN0aW9uKSB7IEFDVElPTl9TVEFSVCAtPiBzdGFydERvd25sb2FkKCk7IEFDVElPTl9TVE9QIC0+IHN0b3BEb3dubG9hZCgpIH0KICAgICAgICByZXR1cm4gU1RBUlRfTk9UX1NUSUNLWQogICAgfQogICAgcHJpdmF0ZSBmdW4gc3RhcnREb3dubG9hZCgpIHsKICAgICAgICBqb2IgPSBzZXJ2aWNlU2NvcGUubGF1bmNoIHsKICAgICAgICAgICAgaW5zdGFsbGVyLmluc3RhbGxSdW50aW1lIHsgcHJvZ3Jlc3MgLT4KICAgICAgICAgICAgICAgIG5vdGlmaWNhdGlvbkJ1aWxkZXIuc2V0UHJvZ3Jlc3MoMTAwLCAocHJvZ3Jlc3MgLyAxMF8wMDBfMDAwKS50b0ludCgpLCBmYWxzZSk7IG5vdGlmaWNhdGlvbkJ1aWxkZXIuc2V0Q29udGVudFRleHQoIkRvd25sb2FkZWQ6ICR7Zm9ybWF0Qnl0ZXMocHJvZ3Jlc3MpfSIpCiAgICAgICAgICAgICAgICBub3RpZmljYXRpb25NYW5hZ2VyLm5vdGlmeShOT1RJRklDQVRJT05fSUQsIG5vdGlmaWNhdGlvbkJ1aWxkZXIuYnVpbGQoKSkKICAgICAgICAgICAgfQogICAgICAgICAgICBub3RpZmljYXRpb25CdWlsZGVyLnNldENvbnRlbnRUaXRsZSgiSW5zdGFsbGF0aW9uIENvbXBsZXRlIik7IG5vdGlmaWNhdGlvbkJ1aWxkZXIuc2V0UHJvZ3Jlc3MoMCwgMCwgZmFsc2UpOyBub3RpZmljYXRpb25NYW5hZ2VyLm5vdGlmeShOT1RJRklDQVRJT05fSUQsIG5vdGlmaWNhdGlvbkJ1aWxkZXIuYnVpbGQoKSkKICAgICAgICAgICAgc3RvcEZvcmVncm91bmQoU1RPUF9GT1JFR1JPVU5EX1JFTU9WRSk7IHN0b3BTZWxmKCkKICAgICAgICB9CiAgICB9CiAgICBwcml2YXRlIGZ1biBzdG9wRG93bmxvYWQoKSB7IGpvYj8uY2FuY2VsKCk7IHN0b3BGb3JlZ3JvdW5kKFNUT1BfRk9SRUdST1VORF9SRU1PVkUpOyBzdG9wU2VsZigpIH0KICAgIHByaXZhdGUgZnVuIGZvcm1hdEJ5dGVzKGJ5dGVzOiBMb25nKTogU3RyaW5nIHsgaWYgKGJ5dGVzIDwgMTAyNCkgcmV0dXJuICIkYnl0ZXMgQiI7IHZhbCBrYiA9IGJ5dGVzIC8gMTAyNC4wOyBpZiAoa2IgPCAxMDI0KSByZXR1cm4gU3RyaW5nLmZvcm1hdCgiJS4xZiBLQiIsIGtiKTsgdmFsIG1iID0ga2IgLyAxMDI0LjA7IHJldHVybiBTdHJpbmcuZm9ybWF0KCIlLjFmIE1CIiwgbWIpIH0KICAgIG92ZXJyaWRlIGZ1biBvbkJpbmQoaW50ZW50OiBJbnRlbnQ/KTogSUJpbmRlcj8gPSBudWxsCn0K
+package com.smoothplay.app.service
+
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.Service
+import android.content.Intent
+import android.os.Build
+import android.os.IBinder
+import android.util.Log
+import androidx.core.app.NotificationCompat
+import com.smoothplay.app.engine.RuntimeInstallerEngine
+import kotlinx.coroutines.*
+
+class DownloadService : Service() {
+    private val serviceScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
+    private lateinit var installer: RuntimeInstallerEngine
+    
+    companion object {
+        const val CHANNEL_ID = "download_channel"
+        const val NOTIFICATION_ID = 1
+        const val ACTION_START = "START_DOWNLOAD"
+        const val ACTION_STOP = "STOP_DOWNLOAD"
+    }
+    
+    override fun onCreate() {
+        super.onCreate()
+        installer = RuntimeInstallerEngine(this)
+        createNotificationChannel()
+    }
+    
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        when (intent?.action) {
+            ACTION_START -> startDownload()
+            ACTION_STOP -> stopDownload()
+        }
+        return START_NOT_STICKY
+    }
+    
+    override fun onBind(intent: Intent?): IBinder? = null
+    
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                "Runtime Download",
+                NotificationManager.IMPORTANCE_LOW
+            ).apply {
+                description = "Shows download progress for game runtime"
+            }
+            val notificationManager = getSystemService(NotificationManager::class.java)
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+    
+    private fun startDownload() {
+        val notification = buildNotification("Preparing download...", 0)
+        startForeground(NOTIFICATION_ID, notification)
+        
+        serviceScope.launch {
+            try {
+                val success = installer.downloadAndInstallRuntime(
+                    onProgress = { message, progress ->
+                        updateNotification(message, progress)
+                    },
+                    isBackground = true
+                )
+                
+                if (success) {
+                    updateNotification("Installation complete!", 100)
+                    Log.d("DownloadService", "Installation successful")
+                } else {
+                    updateNotification("Installation failed", 0)
+                    Log.e("DownloadService", "Installation failed")
+                }
+            } catch (e: Exception) {
+                Log.e("DownloadService", "Service error: ${e.message}", e)
+                updateNotification("Error: ${e.message}", 0)
+            } finally {
+                delay(3000)
+                stopForeground(STOP_FOREGROUND_REMOVE)
+                stopSelf()
+            }
+        }
+    }
+    
+    private fun stopDownload() {
+        serviceScope.cancel()
+        stopForeground(STOP_FOREGROUND_REMOVE)
+        stopSelf()
+    }
+    
+    private fun buildNotification(text: String, progress: Int): Notification {
+        return NotificationCompat.Builder(this, CHANNEL_ID)
+            .setContentTitle("SmoothPlay Setup")
+            .setContentText(text)
+            .setSmallIcon(android.R.drawable.stat_sys_download)
+            .setProgress(100, progress, progress == 0)
+            .setOngoing(true)
+            .build()
+    }
+    
+    private fun updateNotification(text: String, progress: Int) {
+        val notification = buildNotification(text, progress)
+        val notificationManager = getSystemService(NotificationManager::class.java)
+        notificationManager.notify(NOTIFICATION_ID, notification)
+    }
+    
+    override fun onDestroy() {
+        super.onDestroy()
+        serviceScope.cancel()
+    }
+}
