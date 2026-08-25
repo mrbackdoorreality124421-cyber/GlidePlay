@@ -1,92 +1,56 @@
 package com.smoothplay.app.engine
 
-import android.content.Context
-import android.net.Uri
-import android.provider.OpenableColumns
-import android.util.Log
 import java.io.File
 
-object GameScanner {
-    private const val TAG = "GameScanner"
-    
-    private val SUPPORTED_EXTENSIONS = setOf(
-        "exe", "msi", "bat", "cmd",
-        "iso", "img", "bin", "cue",
-        "zip", "7z", "rar", "tar", "gz"
-    )
-    
-    data class GameDetection(
-        val name: String,
-        val path: String,
-        val type: GameType,
-        val executable: String?,
-        val size: Long
-    )
-    
-    enum class GameType(val displayName: String) {
-        WINDOWS_EXE("Windows Game"),
-        DISC_IMAGE("Disc Image"),
-        COMPRESSED("Archive"),
-        EXTRACTED("Extracted Game"),
-        UNKNOWN("Unknown Format")
+data class ScanResult(
+    val mainExecutable: String,
+    val isHeavy: Boolean,
+    val dependencies: List<String>,
+    val weightScore: Int,
+    val totalSizeMb: Long
+)
+
+class GameScanner {
+    fun scanDirectory(gameDir: File): ScanResult {
+        val allFiles = gameDir.walkTopDown().filter { it.isFile }.toList()
+        val executables = allFiles.filter { it.extension.equals("exe", ignoreCase = true) }
+        val mainExe = detectMainExecutable(executables)
+        val deps = detectDependencies(allFiles)
+        val weight = calculateWeight(allFiles)
+        val sizeBytes = allFiles.sumOf { it.length() }
+        val sizeMb = sizeBytes / (1024 * 1024)
+        return ScanResult(
+            mainExecutable = mainExe?.absolutePath ?: "",
+            isHeavy = weight > 50 || sizeMb > 2000,
+            dependencies = deps,
+            weightScore = weight,
+            totalSizeMb = sizeMb
+        )
     }
-    
-    fun detectFromUri(context: Context, uri: Uri): GameDetection? {
-        try {
-            val projection = arrayOf(
-                OpenableColumns.DISPLAY_NAME,
-                OpenableColumns.SIZE
-            )
-            
-            context.contentResolver.query(uri, projection, null, null, null)?.use { cursor ->
-                if (cursor.moveToFirst()) {
-                    val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-                    val sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE)
-                    
-                    val name = if (nameIndex >= 0) cursor.getString(nameIndex) else "Unknown"
-                    val size = if (sizeIndex >= 0) cursor.getLong(sizeIndex) else 0L
-                    
-                    val extension = name.substringAfterLast('.', "").lowercase()
-                    
-                    return when {
-                        extension == "exe" || extension == "msi" -> GameDetection(
-                            name = name.substringBeforeLast('.'),
-                            path = uri.toString(),
-                            type = GameType.WINDOWS_EXE,
-                            executable = uri.toString(),
-                            size = size
-                        )
-                        extension == "iso" || extension == "img" || extension == "bin" -> GameDetection(
-                            name = name.substringBeforeLast('.'),
-                            path = uri.toString(),
-                            type = GameType.DISC_IMAGE,
-                            executable = null,
-                            size = size
-                        )
-                        extension in SUPPORTED_EXTENSIONS -> GameDetection(
-                            name = name.substringBeforeLast('.'),
-                            path = uri.toString(),
-                            type = GameType.COMPRESSED,
-                            executable = null,
-                            size = size
-                        )
-                        else -> null
-                    }
-                }
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "Error detecting from URI: ${e.message}", e)
-        }
-        
-        return null
+
+    private fun detectMainExecutable(exes: List<File>): File? {
+        if (exes.isEmpty()) return null
+        val exactMatches = listOf("game.exe", "launcher.exe", "run.exe", "start.exe", "play.exe")
+        exes.find { exactMatches.contains(it.name.lowercase()) }?.let { return it }
+        return exes.maxByOrNull { it.length() }
     }
-    
-    fun formatSize(bytes: Long): String {
-        return when {
-            bytes >= 1_000_000_000 -> String.format("%.1f GB", bytes / 1_000_000_000.0)
-            bytes >= 1_000_000 -> String.format("%.1f MB", bytes / 1_000_000.0)
-            bytes >= 1_000 -> String.format("%.1f KB", bytes / 1_000.0)
-            else -> "$bytes B"
-        }
+
+    private fun detectDependencies(files: List<File>): List<String> {
+        val deps = mutableListOf<String>()
+        val fileNames = files.map { it.name.lowercase() }
+        if (fileNames.any { it.contains("d3dcompiler") || it.contains("dxgi") || it.contains("d3d") }) deps.add("DirectX")
+        if (fileNames.any { it.contains("vulkan") }) deps.add("Vulkan")
+        if (fileNames.any { it.contains("msvcp") || it.contains("msvcr") || it.contains("vcruntime") }) deps.add("VC++ Redist")
+        if (fileNames.any { it.contains("openal") }) deps.add("OpenAL")
+        if (fileNames.any { it.contains("physx") }) deps.add("PhysX")
+        return deps
+    }
+
+    private fun calculateWeight(files: List<File>): Int {
+        val sizeMb = files.sumOf { it.length() } / (1024 * 1024)
+        var score = (sizeMb / 500).toInt()
+        val dllCount = files.count { it.extension.lowercase() == "dll" }
+        score += (dllCount / 10)
+        return score.coerceIn(0, 100)
     }
 }
